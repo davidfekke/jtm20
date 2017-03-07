@@ -1,0 +1,47 @@
+doctype
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title= title
+		//Bootstrap core CSS 
+		link(href='css/bootstrap.min.css', rel='stylesheet')
+		//link(href='css/fixedtopspace.css', rel='stylesheet')
+		//Custom styles for this template 
+		//HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries 
+		//if lt IE 9
+			script(src='js/html5shiv.js')
+			script(src='js/respond.min.js')
+		style.
+			body {
+				padding-top: 60px;
+			}
+	body
+		.navbar.navbar-inverse.navbar-fixed-top
+			a(href='http://github.com/davidfekke/jaxtechmeetups', alt='Fork me on GitHub' )
+				img(style='position: absolute; top: 0; right: 0; border: 0;', src='http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png', alt='Fork me on GitHub') 
+			.container
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='/') Jax Tech Meetups
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li(class=title=='Events'?'active':undefined)
+							a(href='/') Events
+						li(class=title=='Groups'?'active':undefined)
+							a(href='/groups') Groups
+						li(class=title=='About'?'active':undefined)
+							a(href='/about') About
+		.container
+			block content
+		footer.bs-footer
+			.container
+				p Copyright #{new Date().getFullYear()}, David Fekke L.L.C.
+	script(src='js/jquery.min.js')
+	script(src='js/bootstrap.min.js')
+	block scripts

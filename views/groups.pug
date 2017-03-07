@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  mixin link(href, name)
+    a(href=href)= name
+
+  style.
+    .inline { display: inline; }
+    .pill-pad { margin: 3px; }
+  script(async='async', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+  ins.adsbygoogle(style='display: inline-block; width: 728px; height: 90px;', data-ad-client='ca-pub-3395496145928180', data-ad-slot='5814993232')
+  script.
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  h1 Jax Tech Meetup Groups
+  p Here is a list of developer User Groups in the Jacksonville, Florida area that are geared around technology and learning new programming languages and frameworks.
+  each group in groupArray
+    div.panel.panel-default
+      div.panel-heading 
+        -if (group.group_photo && group.group_photo.thumb_link)
+          img(src= group.group_photo.thumb_link)
+        h3.inline 
+          +link(group.link, group.name)
+      div.panel-body 
+        p 
+          each topic in group.topics
+            span.label.label-info.pill-pad= topic.name + ' '
+            span= ' '
+          br
+          != group.description

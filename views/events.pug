@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  mixin link(href, name)
+    a(href=href)= name
+  
+  script(async='async', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+  ins.adsbygoogle(style='display: inline-block; width: 728px; height: 90px;', data-ad-client='ca-pub-3395496145928180', data-ad-slot='5814993232')
+  script.
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  h1 Jax Upcoming Tech Events
+  p Here are upcoming events for people in the Jacksonville, Florida area interested in learning more about computer programming
+    | and computer languages and frameworks. Find your favorite developer and programming user groups on this site.
+    | Use this page to find programming and technology user group meetings.
+  div.row
+    div.col-md-3
+      a(href="https://itunes.apple.com/us/app/jax-tech-meetups/id919592266?mt=8", target="_blank") 
+        img(src="images/appstore.png", alt="App Store")
+    div.col-md-9
+      p 
+        em Please download our iPhone app. Android and Windows Phone coming soon.
+  br
+  -for(var x = 0; x < eventArray.length; x++) 
+    div.panel.panel-default
+      div.panel-heading
+        h3= eventArray[x].group.name
+        +link(eventArray[x].event_url, eventArray[x].name) 
+      div.panel-body
+        //+formatDateTime(eventArray[x].time)
+        = moment(eventArray[x].time).subtract('hours', 5).format('lll')
+        -if (eventArray[x].venue && eventArray[x].venue.name)
+          div.well.well-lg= eventArray[x].venue.name
+            br
+            -if (eventArray[x].venue && eventArray[x].venue.address_1)
+              = eventArray[x].venue.address_1
+              br
+            -if (eventArray[x].venue && eventArray[x].venue.city)
+              = eventArray[x].venue.city
+            -if (eventArray[x].venue && eventArray[x].venue.state)
+              = ' ' + eventArray[x].venue.state
+            -if (eventArray[x].venue && eventArray[x].venue.zip)
+              = ' ' + eventArray[x].venue.zip
+        -if (eventArray[x].description)
+          != eventArray[x].description
+
+block append scripts
+  script.
+    $(".panel-default img").addClass("img-responsive").removeAttr('style');

@@ -1,0 +1,18 @@
+{
+  "name": "jtm20",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "memory-cache": "^0.1.6",
+    "moment": "^2.17.1",
+    "morgan": "^1.8.1",
+    "node-fetch": "^1.6.3",
+    "pug": "^2.0.0-beta11"
+  }
+}
