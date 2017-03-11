@@ -13,17 +13,18 @@ block content
     (adsbygoogle = window.adsbygoogle || []).push({});
   h1 Jax Tech Meetup Groups
   p Here is a list of developer User Groups in the Jacksonville, Florida area that are geared around technology and learning new programming languages and frameworks.
-  each group in groupArray
-    div.panel.panel-default
-      div.panel-heading 
-        -if (group.group_photo && group.group_photo.thumb_link)
-          img(src= group.group_photo.thumb_link)
-        h3.inline 
-          +link(group.link, group.name)
-      div.panel-body 
-        p 
-          each topic in group.topics
-            span.label.label-info.pill-pad= topic.name + ' '
-            span= ' '
-          br
-          != group.description
+  if groupArray && groupArray.length > 0
+    each group in groupArray
+      div.panel.panel-default
+        div.panel-heading 
+          -if (group.group_photo && group.group_photo.thumb_link)
+            img(src= group.group_photo.thumb_link)
+          h3.inline 
+            +link(group.link, group.name)
+        div.panel-body 
+          p 
+            each topic in group.topics
+              span.label.label-info.pill-pad= topic.name + ' '
+              span= ' '
+            br
+            != group.description

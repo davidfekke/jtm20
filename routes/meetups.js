@@ -48,6 +48,7 @@ function groups(req, res) {
     var cGroups = cache.get('groups');
 	if (cGroups !== null)
 	{
+        console.log('Groups cached');
 		res.render('groups', { title: 'Groups', groupArray: cGroups });
 	} else {
         fetch('https://' + options.hostname + options.path)
@@ -55,13 +56,13 @@ function groups(req, res) {
             .then(groupsObject => {
                 console.log(groupsObject.results);
                 cache.put('groups', groupsObject.results, 3600000);
-                res.render('groups', { title: 'Groups', eventArray: groupsObject.results });
+                res.render('groups', { title: 'Groups', groupArray: groupsObject.results });
             })
             .catch(err => {
                 console.error(err);
                 let groupsObject = {};
                 groupsObject.results = [];
-                res.render('groups', { title: 'Groups', eventArray: groupsObject.results });
+                res.render('groups', { title: 'Groups', groupArray: groupsObject.results });
             });
     }
 }
