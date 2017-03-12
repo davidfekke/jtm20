@@ -1,6 +1,6 @@
 
 function addiOSToken(req, res) {
-    res.send({ msg: "Document already exists" });
+    res.send({ msg: 'Document already exists' });
 }
 
 exports.addiOSToken = addiOSToken;
