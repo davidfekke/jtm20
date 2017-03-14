@@ -27,7 +27,7 @@ block content
         +link(eventArray[x].event_url, eventArray[x].name) 
       div.panel-body
         //+formatDateTime(eventArray[x].time)
-        = moment(eventArray[x].time).subtract('hours', 5).format('lll')
+        = moment(eventArray[x].time).subtract('hours', 4).format('lll')
         -if (eventArray[x].venue && eventArray[x].venue.name)
           div.well.well-lg= eventArray[x].venue.name
             br
