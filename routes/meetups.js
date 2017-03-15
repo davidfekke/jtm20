@@ -1,6 +1,7 @@
 
 const cache = require('memory-cache');
 const fetch = require('node-fetch');
+const moment = require('moment-timezone');
 
 const httpsOptions = {
     hostname: 'api.meetup.com',
@@ -21,8 +22,15 @@ function removeWitchesFromArray (meetupArray) {
     return meetupArray.filter(el => el.group.name !== 'Jacksonville Witches');
 }
 
+/*
+ * Map function to set meeting times to correct timezone
+ */
+const mapTimeToNewYork = meeting => {
+    const currTime = moment(meeting.time).utc().clone();
+    return Object.assign({}, meeting, { time: currTime.tz('America/New_York').format('lll') });
+};
+
 function events(req, res) {
-  // res.send('Hello World!')
     let cEvents = cache.get('events');
     if (cEvents !== null) {
         console.log('Cached Events ran');
@@ -32,8 +40,9 @@ function events(req, res) {
             .then(response => response.json())
             .then(events => {
                 const cleanEventArray = removeWitchesFromArray(events.results);
-                cache.put('events', cleanEventArray, 3600000);
-                res.render('events', { title: 'Events', eventArray: cleanEventArray });
+                const eventArrayCorrectedTimes = cleanEventArray.map(mapTimeToNewYork);
+                cache.put('events', eventArrayCorrectedTimes, 3600000);
+                res.render('events', { title: 'Events', eventArray: eventArrayCorrectedTimes });
             })
             .catch(err => {
                 console.error(err);
