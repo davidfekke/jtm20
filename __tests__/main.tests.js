@@ -10,7 +10,7 @@ const fetch = require('node-fetch');
 const about = require('../routes/about');
 const meetups = require('../routes/meetups');
 const tokens = require('../routes/tokens');
-const meetupService = require('../services/localmeetupservice');
+const meetupService = require('../services/mockmeetupservice');
 app.locals.moment = require('moment');
 
 app.set('view engine', 'pug');
