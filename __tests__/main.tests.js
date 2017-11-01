@@ -10,6 +10,7 @@ const fetch = require('node-fetch');
 const about = require('../routes/about');
 const meetups = require('../routes/meetups');
 const tokens = require('../routes/tokens');
+const meetupService = require('../services/localmeetupservice');
 app.locals.moment = require('moment');
 
 app.set('view engine', 'pug');
@@ -20,8 +21,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', meetups.events);
-app.get('/groups', meetups.groups);
+const exposeService = function (req, resp, next) {
+    req.service = meetupService;
+    next();
+};
+  
+app.get('/', exposeService, meetups.events);
+app.get('/groups', exposeService, meetups.groups);
 app.get('/about', about.index);
 app.post('/token/iostoken', tokens.addiOSToken);
 
