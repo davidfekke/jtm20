@@ -13,27 +13,29 @@ block content
     | and computer languages and frameworks. Find your favorite developer and programming user groups on this site.
     | Use this page to find programming and technology user group meetings.
   br
-  -for(var x = 0; x < eventArray.length; x++) 
-    div.panel.panel-default
-      div.panel-heading
-        h3= eventArray[x].group.name
-        +link(eventArray[x].event_url, eventArray[x].name) 
-      div.panel-body
-        = eventArray[x].time
-        -if (eventArray[x].venue && eventArray[x].venue.name)
-          div.well.well-lg= eventArray[x].venue.name
-            br
-            -if (eventArray[x].venue && eventArray[x].venue.address_1)
-              = eventArray[x].venue.address_1
+  each date in Object.keys(eventArray)
+    h2= date
+    each meeting in eventArray[date]
+      div.panel.panel-default
+        div.panel-heading
+          h3= meeting.group.name
+          +link(meeting.event_url, meeting.name) 
+        div.panel-body
+          = meeting.time.format('dddd, MMMM Do YYYY, h:mA')
+          -if (meeting.venue && meeting.venue.name)
+            div.well.well-lg= meeting.venue.name
               br
-            -if (eventArray[x].venue && eventArray[x].venue.city)
-              = eventArray[x].venue.city
-            -if (eventArray[x].venue && eventArray[x].venue.state)
-              = ' ' + eventArray[x].venue.state
-            -if (eventArray[x].venue && eventArray[x].venue.zip)
-              = ' ' + eventArray[x].venue.zip
-        -if (eventArray[x].description)
-          != eventArray[x].description
+              -if (meeting.venue && meeting.venue.address_1)
+                = meeting.venue.address_1
+                br
+              -if (meeting.venue && meeting.venue.city)
+                = meeting.venue.city
+              -if (meeting.venue && meeting.venue.state)
+                = ' ' + meeting.venue.state
+              -if (meeting.venue && meeting.venue.zip)
+                = ' ' + meeting.venue.zip
+          -if (meeting.description)
+            != meeting.description
 
 block append scripts
   script.
