@@ -27,7 +27,7 @@ function removeWitchesFromArray (meetupArray) {
  */
 const mapTimeToNewYork = meeting => {
     const currTime = moment(meeting.time).utc().clone();
-    return Object.assign({}, meeting, { time: currTime.tz('America/New_York').format('dddd, MMMM Do YYYY, hA') });
+    return Object.assign({}, meeting, { time: currTime.tz('America/New_York') });
 };
 
 function refeshCache() {
