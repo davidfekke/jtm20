@@ -21,7 +21,7 @@ block content
           h3= meeting.group.name
           +link(meeting.event_url, meeting.name) 
         div.panel-body
-          = meeting.time.format('dddd, MMMM Do YYYY, h:mA')
+          = meeting.time.format('dddd, MMMM Do YYYY, h:mmA')
           -if (meeting.venue && meeting.venue.name)
             div.well.well-lg= meeting.venue.name
               br
