@@ -17,6 +17,8 @@ block content
     h2= date
     each meeting in eventArray[date]
       div.panel.panel-default
+        -if (meeting.id)
+          a(name=meeting.id)
         div.panel-heading
           h3= meeting.group.name
           +link(meeting.event_url, meeting.name) 
