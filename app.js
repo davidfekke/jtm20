@@ -3,12 +3,12 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
-const fetch = require('node-fetch');
-const about = require('./routes/about');
+// const fetch = require('node-fetch');
+// const about = require('./routes/about');
 const meetups = require('./routes/meetups');
-const tokens = require('./routes/tokens');
-const meetupService = require('./services/localmeetupservice');
-const refresh = require('./services/refreshcache');
+// const tokens = require('./routes/tokens');
+// const meetupService = require('./services/localmeetupservice');
+// const refresh = require('./services/refreshcache');
 app.locals.moment = require('moment');
 
 app.set('view engine', 'pug');
