@@ -19,22 +19,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const exposeService = function (req, resp, next) {
-  req.service = meetupService;
-  next();
-};
+// const exposeService = function (req, resp, next) {
+//   req.service = meetupService;
+//   next();
+// };
 
-app.get('/', exposeService, meetups.events);
-app.get('/groups', exposeService, meetups.groups);
-app.get('/about', about.index);
-app.post('/token/iostoken', tokens.addiOSToken);
+app.get('/', meetups.events);
+// app.get('/groups', exposeService, meetups.groups);
+// app.get('/about', about.index);
+// app.post('/token/iostoken', tokens.addiOSToken);
 
 // Set a job to reset cache every 15 minutes
-setImmediate(refresh);
-setInterval(() => {
-  console.log('Refreshing cache'); 
-  refresh();
-}, 60 * 60 * 1000);
+// setImmediate(refresh);
+// setInterval(() => {
+//   console.log('Refreshing cache'); 
+//   refresh();
+// }, 60 * 60 * 1000);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!')
