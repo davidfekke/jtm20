@@ -6,14 +6,14 @@ const moment = require('moment-timezone');
 const httpsOptions = {
     hostname: 'api.meetup.com',
     port: 443,
-    path: '/2/open_events?&sign=true&photo-host=public&zip=32246&category=34&radius=25&page=50&key=' + process.env.meetupapi_key,
+    path:'find/upcoming_events?&sign=true&photo-host=public&lon=-81.77&lat=30.33&topic_category=34&radius=25&page=50&key=' + process.env.meetupapi_key,
     method: 'GET'
 };
 
 const options = {
     hostname: 'api.meetup.com',
     port: 443,
-    path: '/2/groups?&sign=true&zip=32246&category_id=34&radius=25&page=50&key=' + process.env.meetupapi_key,
+    path: '/find/groups?&sign=true&photo-host=public&zip=32246&category=34&radius=25&page=50&key=' + process.env.meetupapi_key,
     method: 'GET'
 };
 
