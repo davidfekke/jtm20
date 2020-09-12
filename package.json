@@ -15,7 +15,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "morgan": "^1.8.1",
-    "node-fetch": "^1.6.3",
+    "node-fetch": "^2.6.1",
     "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
