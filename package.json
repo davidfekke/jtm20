@@ -16,7 +16,7 @@
     "moment-timezone": "^0.5.17",
     "morgan": "^1.8.1",
     "node-fetch": "^1.6.3",
-    "pug": "^2.0.0-beta11"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
