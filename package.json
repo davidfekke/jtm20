@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "memory-cache": "^0.1.6",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
