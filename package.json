@@ -9,8 +9,8 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "memory-cache": "^0.1.6",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
